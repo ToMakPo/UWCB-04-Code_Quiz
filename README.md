@@ -1,2 +1,2 @@
-# UWCB-04-Code_Quiz
+# UWCB 04 - Code Quiz
 Homework assignment for unit 4 of UW Coding Bootcamp.
