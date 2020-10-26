@@ -36,7 +36,7 @@ const questions = [ // an array that holds the list of questions and their answe
 ]
 
 // score tracking variables
-const startingTime = 120 // the amount of time that will be given the the user to answer all of the questions in seconds
+const startingTime = 10 // the amount of time that will be given the the user to answer all of the questions in seconds
 const timePenalty = 10 // the amount of time that will be given the the user to answer all of the questions in seconds
 var remainingTime // the amount of time left on the clock
 var timer // the interval timer
@@ -61,9 +61,9 @@ function init() {
                 answerFeedback.textContent = "Wrong!"
                 questionNumbersBox.children[nextQuestionIndex - 1].classList.add('wrong')
                 remainingTime -= timePenalty
-                timeDisplay.textContent = formatSeconds(remainingTime)
             }
-            displayNextQuestion()
+            if (remainingTime > 0) displayNextQuestion()
+            else displayGetNamePage()
         }
     })
     submitInitialsButton.addEventListener('click', event => {
@@ -143,7 +143,6 @@ function displayQuestionPage() {
 
     // setup the question numbers
     questionNumbersBox.innerHTML = ""
-    questionNumbers = []
 
     for (let i = 0; i < questions.length; i++) {
         const element = questions[i];
@@ -199,12 +198,15 @@ function displayNextQuestion() {
 /** Display the get name page. */
 function displayGetNamePage() {
     displayPage('get_name_page')
+    if (remainingTime < 0) remainingTime = 0
+    timeDisplay.textContent = formatSeconds(remainingTime)
     scoreDisplay.textContent = score
 }
 
 /** Display the highscore page. */
 function displayHighscorePage() {
     displayPage('highscore_page')
+    questionNumbersBox.innerHTML = ""
 
     highscoreList.innerHTML = ""
 
@@ -250,6 +252,7 @@ function startTimer() {
     
         if (remainingTime < 0) {
             clearInterval(timer)
+            displayGetNamePage()
         } else {
             timeDisplay.textContent = formatSeconds(remainingTime)
         }
