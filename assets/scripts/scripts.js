@@ -130,6 +130,7 @@ function displayPage(id) {
 function displayStartingPage() {
     displayPage('starting_page')
     
+    clearInterval(timer)
     remainingTime = 0
     timeDisplay.textContent = formatSeconds(remainingTime)
 }
@@ -209,6 +210,8 @@ function displayHighscorePage() {
     questionNumbersBox.innerHTML = ""
 
     highscoreList.innerHTML = ""
+
+    clearInterval(timer)
 
     let highscores = JSON.parse(localStorage.getItem('highscores'))
     
