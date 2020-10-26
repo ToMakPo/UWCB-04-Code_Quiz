@@ -1,6 +1,7 @@
 // initialize all of the important elements
 var main = document.getElementsByTagName('main')[0]
 var viewHighscoreLink = document.getElementById('view_highscore_link')
+var timeDisplay = document.getElementById('time_display')
 var startQuizButton = document.getElementById('start_quiz_button')
 var questionNumbersBox = document.getElementById('question_numbers_box')
 var questionDisplay = document.getElementById('question_display')
@@ -37,7 +38,8 @@ const questions = [ // an array that holds the list of questions and their answe
 // score tracking variables
 const startingTime = 120 // the amount of time that will be given the the user to answer all of the questions in seconds
 const timePenalty = 10 // the amount of time that will be given the the user to answer all of the questions in seconds
-var timer // the amount of time left on the clock
+var remainingTime // the amount of time left on the clock
+var timer // the interval timer
 var score // the number of correct questions
 
 /** Set up the pages and get the quiz ready. */
@@ -58,7 +60,7 @@ function init() {
             } else {
                 answerFeedback.textContent = "Wrong!"
                 questionNumbersBox.children[nextQuestionIndex - 1].classList.add('wrong')
-                timer -= timePenalty
+                remainingTime -= timePenalty
             }
             displayNextQuestion()
         }
@@ -74,7 +76,7 @@ function init() {
                 'timestamp': timestamp,
                 'score': score,
                 'initials': initials,
-                'timeRemaining': 0
+                'timeRemaining': remainingTime
             })
             
             highscores = highscores.sort((a, b) => {
@@ -125,6 +127,9 @@ function displayPage(id) {
 /** Display the starting page. */
 function displayStartingPage() {
     displayPage('starting_page')
+    
+    remainingTime = 0
+    timeDisplay.textContent = formatSeconds(remainingTime)
 }
 
 var nextQuestionIndex // The index of question currently being displayed to the user 
@@ -151,7 +156,9 @@ function displayQuestionPage() {
     // reset the values to back to their defaults
     nextQuestionIndex = 0
     score = 0
-    timer = startingTime
+
+    // start the timer
+    startTimer()
 
     // setup the first question
     displayNextQuestion()
@@ -165,7 +172,7 @@ function displayNextQuestion() {
         const answers = randomizedQuestions[nextQuestionIndex].answers
         const randomizedAnswers = randomizeArray(answers)
         const correctAnswer = answers[randomizedQuestions[nextQuestionIndex].correct_index]
-
+        
         questionDisplay.textContent = question
         answersList.innerHTML = ""
         answerFeedback.textContent = ""
@@ -182,15 +189,18 @@ function displayNextQuestion() {
 
         nextQuestionIndex++
     } else {
+        clearInterval(timer)
         displayGetNamePage()
     }
 }
 
+/** Display the get name page. */
 function displayGetNamePage() {
     displayPage('get_name_page')
     scoreDisplay.textContent = score
 }
 
+/** Display the highscore page. */
 function displayHighscorePage() {
     displayPage('highscore_page')
 
@@ -205,7 +215,7 @@ function displayHighscorePage() {
         var el = document.createElement('div')
         let initials = highscore.initials.padEnd(3, ' ')
         let playerScore = highscore.score.toString().padStart(3, ' ')
-        let timeRemaining = highscore.timeRemaining
+        let timeRemaining = formatSeconds(highscore.timeRemaining)
         el.textContent = `${i}. ${initials} - Score: ${playerScore} - Time Remaining: ${timeRemaining}`
         highscoreList.appendChild(el)
     }
@@ -226,6 +236,33 @@ function randomizeArray(array) {
     }
 
     return output
+}
+
+/** Start the count down timer */
+function startTimer() {
+    remainingTime = startingTime
+    timeDisplay.textContent = formatSeconds(remainingTime)
+    
+    timer = setInterval(function() {
+        remainingTime--
+    
+        if (remainingTime < 0) {
+            clearInterval(timer)
+        } else {
+            timeDisplay.textContent = formatSeconds(remainingTime)
+        }
+    
+    }, 1000)
+}
+
+/** Convert a given number of seconds to a 'M:SS' format
+ * 
+ * @param {number} seconds 
+ */
+function formatSeconds(seconds) {
+    let m = Math.floor(seconds / 60)
+    let s = ("0" + (seconds % 60)).slice(-2)
+    return `${m}:${s}`
 }
 
 init()
