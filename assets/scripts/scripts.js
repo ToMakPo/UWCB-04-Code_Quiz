@@ -36,7 +36,7 @@ const questions = [ // an array that holds the list of questions and their answe
 ]
 
 // score tracking variables
-const startingTime = 10 // the amount of time that will be given the the user to answer all of the questions in seconds
+const startingTime = 120 // the amount of time that will be given the the user to answer all of the questions in seconds
 const timePenalty = 10 // the amount of time that will be given the the user to answer all of the questions in seconds
 var remainingTime // the amount of time left on the clock
 var timer // the interval timer
