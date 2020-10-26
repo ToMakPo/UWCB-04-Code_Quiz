@@ -99,7 +99,7 @@ function init() {
     })
     clearHighscoresButton.addEventListener('click', event => {
         event.preventDefault()
-        localStorage.setItem('highscores', "{}")
+        localStorage.setItem('highscores', "[]")
         displayHighscorePage()
     })
     viewHighscoreLink.addEventListener('click', event => {
