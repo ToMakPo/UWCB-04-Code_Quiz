@@ -61,6 +61,7 @@ function init() {
                 answerFeedback.textContent = "Wrong!"
                 questionNumbersBox.children[nextQuestionIndex - 1].classList.add('wrong')
                 remainingTime -= timePenalty
+                timeDisplay.textContent = formatSeconds(remainingTime)
             }
             displayNextQuestion()
         }
@@ -99,6 +100,7 @@ function init() {
     clearHighscoresButton.addEventListener('click', event => {
         event.preventDefault()
         localStorage.setItem('highscores', "{}")
+        displayHighscorePage()
     })
     viewHighscoreLink.addEventListener('click', event => {
         event.preventDefault()
