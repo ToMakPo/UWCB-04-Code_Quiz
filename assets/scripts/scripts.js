@@ -271,7 +271,7 @@ function displayHighscorePage() {
         let initials = highscore.initials.padEnd(3, ' ')
         let playerScore = highscore.score.toString().padStart(3, ' ')
         let timeRemaining = formatSeconds(highscore.timeRemaining)
-        el.textContent = `${i}. ${initials} - Score: ${playerScore} - Time Remaining: ${timeRemaining}`
+        el.textContent = `${i}. ${initials} - Score: ${playerScore} - Time: ${timeRemaining}`
         highscoreList.appendChild(el)
     }
 }
