@@ -52,6 +52,7 @@ main #starting_page #start_quiz_button {
 
 main #question_numbers_box {
   display: flex;
+  flex-wrap: wrap;
 }
 
 main #question_numbers_box span {
