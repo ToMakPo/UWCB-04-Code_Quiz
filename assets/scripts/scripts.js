@@ -146,9 +146,12 @@ function init() {
         displayStartingPage()
     })
     clearHighscoresButton.addEventListener('click', event => {
-        event.preventDefault()
-        localStorage.setItem('highscores', "[]")
-        displayHighscorePage()
+        var confirmed = confirm("You are about to clear all of your highscores. Would you like to continue?")
+        if (confirmed) {
+            event.preventDefault()
+            localStorage.setItem('highscores', "[]")
+            displayHighscorePage()
+        }
     })
     viewHighscoreLink.addEventListener('click', event => {
         event.preventDefault()
