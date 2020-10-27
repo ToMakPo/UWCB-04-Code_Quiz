@@ -268,8 +268,8 @@ function displayHighscorePage() {
         i++
         let highscore = highscores[key]
         var el = document.createElement('div')
-        let initials = highscore.initials.padEnd(3, ' ')
-        let playerScore = highscore.score.toString().padStart(3, ' ')
+        let initials = highscore.initials.padEnd(3, ' ')
+        let playerScore = highscore.score.toString().padStart(3, ' ')
         let timeRemaining = formatSeconds(highscore.timeRemaining)
         el.textContent = `${i}. ${initials} - Score: ${playerScore} - Time Remaining: ${timeRemaining}`
         highscoreList.appendChild(el)
@@ -316,7 +316,7 @@ function startTimer() {
  * @param {number} seconds 
  */
 function formatSeconds(seconds) {
-    let m = Math.floor(seconds / 60)
+    let m = Math.floor(seconds / 60).toString().padStart(2, ' ')
     let s = ("0" + (seconds % 60)).slice(-2)
     return `${m}:${s}`
 }
