@@ -97,7 +97,7 @@ function init() {
         event.preventDefault()
         displayQuestionPage()
     })
-    answersList.addEventListener('click', event => {
+    answersList.addEventListener('click', function(event) {
         event.preventDefault()
         if (event.target.matches('button')) {
             var button = event.target
@@ -297,6 +297,7 @@ function randomizeArray(array) {
 }
 
 /** Start the count down timer */
+
 function startTimer() {
     remainingTime = startingTime
     timeDisplay.textContent = formatSeconds(remainingTime)
@@ -320,7 +321,7 @@ function startTimer() {
  */
 function formatSeconds(seconds) {
     let m = Math.floor(seconds / 60).toString().padStart(2, ' ')
-    let s = ("0" + (seconds % 60)).slice(-2)
+    let s = (seconds % 60).toString().padStart(2, '0')
     return `${m}:${s}`
 }
 
