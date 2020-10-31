@@ -15,7 +15,8 @@ For this project, I need to build a site from scratch that will do the following
 - The user's initials and score should be stored to local storage.
 
 ## ⚔️ PROJECT
-Here is a link to to [GitHub repo](https://tomakpo.github.io/UWCB-04-Code_Quiz/) for this project.
+Here is a link to to [GitHub repo](https://github.com/ToMakPo/UWCB-04-Code_Quiz) and teh link to the 
+[live project](https://tomakpo.github.io/UWCB-04-Code_Quiz/) for this project.
 
 When the user first gets to the site, they will see the starting page.
 
