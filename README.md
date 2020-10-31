@@ -24,7 +24,8 @@ When the user first gets to the site, they will see the starting page.
 
 ![The starting page](https://i.imgur.com/NDIGchc.png)
 
-When the user clicks the "Start Quiz" button, the quiz will start and the user will be brought to the first question.
+When the user clicks the "Start Quiz" button, the quiz will start and the user will be brought to the first question. Each 
+time the quiz starts, the questions are randomly sorted, as are teh answers to the questions. 
 
 ![The quiz page](https://i.imgur.com/Ly8aVIO.png)
 
