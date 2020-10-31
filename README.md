@@ -11,12 +11,14 @@ For this project, I need to build a site from scratch that will do the following
     - If the user selected the correct answer, the score should be increased by one.
     - If the user selected the wrong answer, the timer should be decremented by some amount.
 - When the user has answered the last question or the timer runs out, then the quiz will end.
-- At the end of the quiz, the user should asked for his or her initials. 
+- At the end of the quiz, the user should be asked for his or her initials. 
 - The user's initials and score should be stored to local storage.
 
 ## ⚔️ PROJECT
-Here is a link to to [GitHub repo](https://github.com/ToMakPo/UWCB-04-Code_Quiz) and teh link to the 
+Here is a link to the [GitHub repo](https://github.com/ToMakPo/UWCB-04-Code_Quiz) and the link to the 
 [live project](https://tomakpo.github.io/UWCB-04-Code_Quiz/) for this project.
+
+---
 
 When the user first gets to the site, they will see the starting page.
 
