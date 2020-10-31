@@ -16,7 +16,7 @@ For this project, I need to build a site from scratch that will do the following
 
 ## ⚔️ PROJECT
 Here is a link to the [GitHub repo](https://github.com/ToMakPo/UWCB-04-Code_Quiz) and the link to the 
-[live project](https://tomakpo.github.io/UWCB-04-Code_Quiz/) for this project.
+[live page](https://tomakpo.github.io/UWCB-04-Code_Quiz/) for this project.
 
 ---
 
